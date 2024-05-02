@@ -11,14 +11,17 @@ class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $pdfPath; // Public property to hold the PDF path
+
     /**
      * Create a new message instance.
      *
+     * @param string $pdfPath
      * @return void
      */
-    public function __construct()
+    public function __construct($pdfPath)
     {
-        //
+        $this->pdfPath = $pdfPath; // Assign PDF path to the public property
     }
 
     /**
@@ -27,8 +30,10 @@ class SendMail extends Mailable
      * @return $this
      */
     public function build()
-    {
-        return $this->subject('Test Email') // Email subject
-        ->view('emails.sendmail'); // Blade view file for email content
-    }
+{
+    return $this->subject('Redeployment Letter') // Email subject
+                ->view('emails.sendmail') // Blade view file for email content
+                ->attachFromStorage($this->pdfPath, 'checks_pdf.pdf', ['mime' => 'application/pdf']);
+}
+
 }

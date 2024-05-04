@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage; // Import the Storage facade
+use Illuminate\Support\Facades\Storage; 
 use App\Mail\SendMail;
 use Mpdf\Mpdf;
 

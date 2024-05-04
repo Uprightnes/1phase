@@ -16,6 +16,13 @@ use App\Http\Controllers\mailController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('redeploy', [App\Http\Controllers\redeployController::class, 'index']);
+
+Route::put('edit/{staffId}', [editController::class, 'edit']);
+
+Route::delete('/delete/{staffId}', [deleteController::class, 'delete']);
+
+Route::post('/sendmail/{staffId}', [MailController::class, 'sendEmail']);
 
 Route::get('/sendmail', [mailController::class, 'sendEmail']);
 // Route::get('/send-mail', [mailController::class, 'sendMailWithPdf']);
